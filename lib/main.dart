@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() => runApp(MyApp());
 
@@ -50,9 +51,66 @@ class HomePage extends StatelessWidget {
           title: Text(
         "Flutter layout tutorial",
       )),
-      body: Column(
-        children: <Widget>[titleSection],
+      body: ListView(
+        children: <Widget>[
+          Image.asset(
+            'images/photo.jpg',
+            width: 600,
+            height: 240,
+            fit: BoxFit.cover,
+          ),
+          titleSection,
+          ButtonSection(),
+          Container(
+            padding: EdgeInsets.all(32.0),
+            child: Text(
+              'Oeschinensee is accessible by foot from Kandersteg within 1.5 hours.'
+              'The cable car operates in summer and winter season daily from mornings till evenings - non stop'
+              '. In summer enjoy swimming in the lake, boat rides on the'
+              'blue and clear water or just have fun with the toboggan run'
+               'Oeschinensee is accessible by foot from Kandersteg within 1.5 hours.'
+              'The cable car operates in summer and winter season daily from mornings till evenings - non stop'
+              ,
+            ),
+          )
+        ],
       ),
+    );
+  }
+}
+
+class ButtonSection extends StatelessWidget {
+  Widget _buildColumn(BuildContext context, IconData icon, String label) {
+    Color color = Theme.of(context).primaryColor;
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Icon(
+          icon,
+          color: color,
+        ),
+        Container(
+          margin: EdgeInsets.only(top: 8.0),
+          child: Text(
+            label,
+            style: TextStyle(
+                color: color, fontSize: 12.0, fontWeight: FontWeight.w400),
+          ),
+        )
+      ],
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        _buildColumn(context, Icons.call, "CALL"),
+        _buildColumn(context, Icons.near_me, "ROUTE"),
+        _buildColumn(context, Icons.share, "SHARE"),
+      ],
     );
   }
 }
