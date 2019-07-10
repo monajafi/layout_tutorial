@@ -16,6 +16,46 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class FavoriteWidget extends StatefulWidget {
+  @override
+  _FavoriteWidgetState createState() => _FavoriteWidgetState();
+}
+
+class _FavoriteWidgetState extends State<FavoriteWidget> {
+  int count = 41;
+  bool isLiked = true;
+  void _likeClicked() {
+    if (isLiked) {
+      count--;
+    } else {
+      count++;
+    }
+    isLiked = !isLiked;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        GestureDetector(
+          child: Icon(
+            isLiked ? Icons.star : Icons.star_border,
+            color: Colors.red,
+          ),
+          onTap: () {
+            setState(() {
+              _likeClicked();
+            });
+          },
+        ),
+        Text(
+          count.toString(),
+        )
+      ],
+    );
+  }
+}
+
 class HomePage extends StatelessWidget {
   Widget titleSection = Container(
     padding: EdgeInsets.all(32.0),
@@ -38,8 +78,7 @@ class HomePage extends StatelessWidget {
                 ),
               ]),
         ),
-        Icon(Icons.star, color: Colors.red),
-        Text('41'),
+        FavoriteWidget(),
       ],
     ),
   );
@@ -68,9 +107,8 @@ class HomePage extends StatelessWidget {
               'The cable car operates in summer and winter season daily from mornings till evenings - non stop'
               '. In summer enjoy swimming in the lake, boat rides on the'
               'blue and clear water or just have fun with the toboggan run'
-               'Oeschinensee is accessible by foot from Kandersteg within 1.5 hours.'
-              'The cable car operates in summer and winter season daily from mornings till evenings - non stop'
-              ,
+              'Oeschinensee is accessible by foot from Kandersteg within 1.5 hours.'
+              'The cable car operates in summer and winter season daily from mornings till evenings - non stop',
             ),
           )
         ],
