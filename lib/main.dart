@@ -68,6 +68,8 @@ class HomePage extends StatelessWidget {
               'The cable car operates in summer and winter season daily from mornings till evenings - non stop'
               '. In summer enjoy swimming in the lake, boat rides on the'
               'blue and clear water or just have fun with the toboggan run'
+               'Oeschinensee is accessible by foot from Kandersteg within 1.5 hours.'
+              'The cable car operates in summer and winter season daily from mornings till evenings - non stop'
               ,
             ),
           )
